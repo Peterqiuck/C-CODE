@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
+//#include<math.h>
+using namespace std;
+
+int main()
+{
+	float a,b;
+	char op;
+	cin >> a>>b>>op;
+	switch (op)
+	{
+	case '+':cout << a+b<< endl; break;
+	case '-':cout << a-b<< endl; break;
+	case '*':cout << a*b<< endl; break;
+	case '/':if (b != 0)//算除法分母不能等于零
+	{
+		cout << a / b << endl; break;
+	}
+			else cout << "Divided by zero!" << endl; break;
+	default:cout << "Invalid operator!";
+	}
+	return 0;
+ }
