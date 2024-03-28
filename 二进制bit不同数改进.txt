@@ -1,0 +1,19 @@
+int same(int m, int n)
+{
+	int count = 0;
+	int a = m ^ n;
+	while (a)
+	{
+		a = a & (a - 1);
+		count++;
+	}
+	return count;
+}
+int main()
+{
+	int m = 1999;
+	int n = 2299;
+	int ret=same(m, n);
+	printf("%d\n", ret);
+	return 0;
+}
