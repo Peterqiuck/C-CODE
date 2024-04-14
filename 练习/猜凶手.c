@@ -11,18 +11,9 @@ int main()
 	int xiongshou = 0;
 	for (xiongshou = 'a'; xiongshou <= 'd'; xiongshou++)
 	{
-		for (xiongshou = 'a'; xiongshou <= 'd'; xiongshou++)
+		if ((xiongshou != 'a') + (xiongshou == 'c') + (xiongshou == 'd') + (xiongshou != 'd') == 3)
 		{
-			for (xiongshou = 'a'; xiongshou <= 'd'; xiongshou++)
-			{
-				for (xiongshou = 'a'; xiongshou <= 'd'; xiongshou++)
-				{
-					if ((xiongshou != 'a') + (xiongshou == 'c') + (xiongshou == 'd') + (xiongshou != 'd') == 3)
-					{
-						printf("凶手是：%c", xiongshou);
-					}
-				}
-			}
+			printf("凶手是：%c", xiongshou);
 		}
 	}
 	return 0;
