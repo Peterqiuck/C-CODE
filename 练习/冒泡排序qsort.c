@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-//qsort×Ö·û´®ÅÅÐò
+//qsort×Ö·û´®ÅÅÐò 
 int cmp(const void* a, const void* b)
 {
 	return strlen(*(char**)a)-strlen(*(char**)b);
