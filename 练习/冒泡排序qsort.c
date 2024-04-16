@@ -28,7 +28,7 @@ int main()
 //};
 //int cmp(const void* e1, const void* e2)
 //{
-//	return strcmp(((struct stu*)e1)->name,((struct stu*)e2)->name);
+//	return strlen(((struct stu*)e1)->name)-strlen(((struct stu*)e2)->name);
 //}
 //int main()
 //{
