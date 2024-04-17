@@ -9,23 +9,23 @@ char* my_strstr(const char* p1, const char* p2)
 {
 	assert(p1 != NULL);
 	assert(p2);
-	if (*p2 == '\0')
+	if (!*p2)
 	{
 		return p1;
 	}
-	char* s1 = p1;
-	char* s2 = p2;
-	char* start = p1;
+	char* s1;
+	char* s2;
+	char* start = (char*)p1;
 	while (*start)
 	{
 		s1 = start;
-		s2 = p2;
-		while ((*s1 == *s2) && (*s1 != '\0') && (*s2 != '\0'))//发现有相同元素
+		s2 = (char*)p2;
+		while (*s1 && *s2 && !(*s1 - *s2))//发现有相同元素
 		{
 			s1++;
 			s2++;
 		}
-		if (*s2 == '\0')
+		if (!*s2)
 		{
 			return start;
 		}
@@ -33,6 +33,34 @@ char* my_strstr(const char* p1, const char* p2)
 	}
 	return NULL;
 }
+
+
+int main()
+{
+	//情况1-情况3
+	char str1[] = "abbbbccdef";
+	char str2[] = "bbbcc";
+
+	//情况2
+	//char str1[] = "abcdef";
+	//char str2[] = "efa";
+
+	//情况3
+	/*char str1[] = "abcdef";
+	char str2[] = "cd";*/
+
+	//情况4
+	//char str1[] = "abcdef";
+	//char str2[] = "ef";
+
+	//情况5
+	/*char str1[] = "abcde";
+	char str2[] = "hj";*/
+	int ret=my_strstr(str1, str2);
+	printf("%s", ret);
+	return 0;
+}
+
 
 //char* my_strstr(const char* p1, const char* p2)
 //{
@@ -83,31 +111,16 @@ char* my_strstr(const char* p1, const char* p2)
 //		}
 //	}
 //}
-int main()
-{
-	//情况1-情况3
-	char str1[] = "abbbbccdef";
-	char str2[] = "bbbcc";
 
-	//情况2
-	//char str1[] = "abcdef";
-	//char str2[] = "efa";
-
-	//情况3
-	/*char str1[] = "abcdef";
-	char str2[] = "cd";*/
-
-	//情况4
-	//char str1[] = "abcdef";
-	//char str2[] = "ef";
-
-	//情况5
-	/*char str1[] = "abcde";
-	char str2[] = "hj";*/
-	int ret=my_strstr(str1, str2);
-	printf("%s", ret);
-	return 0;
-}
+//int main()
+//{
+//	
+//	char str1[] = "abbbbccdef";
+//	char str2[] = "bbbcc";
+//	int ret = my_strstr(str1, str2);
+//	printf("%s", ret);
+//	return 0;
+//}
 
 //找子串
 //int main()
