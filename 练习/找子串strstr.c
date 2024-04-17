@@ -9,51 +9,80 @@ char* my_strstr(const char* p1, const char* p2)
 {
 	assert(p1 != NULL);
 	assert(p2);
-	char* s1 = p1;
-	char* s2 = p2;
-	if (*s2 == '\0')
+	if (*p2 == '\0')
 	{
 		return p1;
 	}
-	while (*s2!='\0')
+	char* s1 = p1;
+	char* s2 = p2;
+	char* start = p1;
+	while (*start)
 	{
-		while ((*s1 != *s2)&&(*s1 != '\0'))//找到相同元素的首地址
+		s1 = start;
+		s2 = p2;
+		while ((*s1 == *s2) && (*s1 != '\0') && (*s2 != '\0'))//发现有相同元素
 		{
 			s1++;
+			s2++;
 		}
-		char* start = s1;
-		if (*s1 == '\0')//如果检索完p1没发现相同元素，情况5.例如：abcd与fe
+		if (*s2 == '\0')
 		{
-			return NULL;
+			return start;
 		}
-		else
-		{
-			while ((*s1 == *s2) && (*s1 != '\0') && (*s2 != '\0'))//发现有相同元素
-			{
-				s1++;
-				s2++;
-			}
-			if ((*s1 != *s2) && (*s1 != '\0') && (*s2 != '\0'))//情况1.例如：abbbbccdef与bbbcc
-			{
-				start++;
-				s1 = start;
-				s2 = p2;
-			}
-			else if ((*s1 != *s2)&&(*s1 == '\0') && (*s2 != '\0'))//情况2.只有部分元素相同，例如：abcdef与efa
-			{
-				return NULL;
-			}
-			else if ((*s1 != *s2) && (*s1 != '\0') && (*s2 == '\0'))//情况3.例如：abcdef与cd
-			{
-				return start;
-			}
-			else if ((*s1 == *s2) && (*s1 == '\0') && (*s2 == '\0'))//情况4.例如：abcdef与ef
-			{
-				return p2;
-			}
-		}
+		start++;
 	}
+	return NULL;
 }
+
+//char* my_strstr(const char* p1, const char* p2)
+//{
+//	assert(p1 != NULL);
+//	assert(p2);
+//	char* s1 = p1;
+//	char* s2 = p2;
+//	if (*s2 == '\0')
+//	{
+//		return p1;
+//	}
+//	while (*s2!='\0')
+//	{
+//		while ((*s1 != *s2)&&(*s1 != '\0'))//找到相同元素的首地址
+//		{
+//			s1++;
+//		}
+//		char* start = s1;
+//		if (*s1 == '\0')//如果检索完p1没发现相同元素，情况5.例如：abcd与fe
+//		{
+//			return NULL;
+//		}
+//		else
+//		{
+//			while ((*s1 == *s2) && (*s1 != '\0') && (*s2 != '\0'))//发现有相同元素
+//			{
+//				s1++;
+//				s2++;
+//			}
+//			if ((*s1 != *s2) && (*s1 != '\0') && (*s2 != '\0'))//情况1.例如：abbbbccdef与bbbcc
+//			{
+//				start++;
+//				s1 = start;
+//				s2 = p2;
+//			}
+//			else if ((*s1 != *s2)&&(*s1 == '\0') && (*s2 != '\0'))//情况2.只有部分元素相同，例如：abcdef与efa
+//			{
+//				return NULL;
+//			}
+//			else if ((*s1 != *s2) && (*s1 != '\0') && (*s2 == '\0'))//情况3.例如：abcdef与cd
+//			{
+//				return start;
+//			}
+//			else if ((*s1 == *s2) && (*s1 == '\0') && (*s2 == '\0'))//情况4.例如：abcdef与ef
+//			{
+//				return p2;
+//			}
+//		}
+//	}
+//}
 int main()
 {
 	//情况1-情况3
