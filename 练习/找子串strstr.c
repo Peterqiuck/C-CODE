@@ -29,6 +29,10 @@ char* my_strstr(const char* p1, const char* p2)
 		{
 			return start;
 		}
+		if (!*s1)
+		{
+			return NULL;//ÌáÇ°½áÊø
+		}
 		start++;
 	}
 	return NULL;
