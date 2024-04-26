@@ -22,6 +22,8 @@ int main()
 	}
 	printf("%c", fgetc(pr));
 	printf("%c", fgetc(pr));
+                fclose(pf);
+                pf=UNLL;
 	return 0;
 }
 
